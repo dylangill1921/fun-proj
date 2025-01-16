@@ -1,4 +1,4 @@
-/* Stored Procedures */
+/* Stored Procedures to retrieve data effectively to display on web */
 USE Formula1db;
 
 /* Register a user */
