@@ -1,4 +1,4 @@
-/* Country table and scubscriptions table */
+/* Country table and scubscriptions table data */
 USE Formula1db;
 
 INSERT INTO subscriptions (StatusID, StatusName) VALUES
