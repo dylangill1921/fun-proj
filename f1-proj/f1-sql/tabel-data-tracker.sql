@@ -1,4 +1,4 @@
-/* Data for all Tables */
+/* Data for all Tables to check */
 USE Formula1db;
 
 SELECT * FROM articles;
@@ -29,10 +29,14 @@ SELECT * FROM subscriptions;
 -- complete
 
 SELECT * FROM tireCompounds;
--- unfinished
+-- complete
 
 SELECT * FROM tireTypes;
--- unfinished
+-- complete
+
+SELECT * FROM tireTypeCompounds;
+-- complete
 
 SELECT * FROM tracks;
 -- complete
+
