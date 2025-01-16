@@ -1,7 +1,14 @@
 // config/db.js
+
+// Import the mssql package
 const sql = require('mssql');
+
+// Load the environment variables fromt the .env file
 require('dotenv').config();
 
+// Configuration object for connecting to the 
+// SQL server using environment variables this provides a layer of abstraction
+// making it easier to manage sensitive info
 const config = {
     user: process.env.DB_USER,
     password: process.env.DB_PASS,
@@ -13,6 +20,8 @@ const config = {
     }
 };
 
+// Create a connection pool using the configuration above,
+//  which allows for better performance
 const poolPromise = new sql.ConnectionPool(config)
     .connect()
     .then(pool => {
@@ -20,10 +29,11 @@ const poolPromise = new sql.ConnectionPool(config)
         return pool;
     })
     .catch(err => {
-        console.error('Database Connection Failed! Bad Config: ', err);
+        console.error('Database Connection Failed! Bad Config: \n', err);
         process.exit(1);
     });
 
+// Export the sql and poolPromise to be reused in this application
 module.exports = {
     sql, 
     poolPromise
