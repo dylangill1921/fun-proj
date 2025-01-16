@@ -1,4 +1,5 @@
 /* tire compounds and types data */
+-- must include junction table 
 
 /* tire compounds */
 INSERT INTO tireCompounds (compoundName) 
@@ -12,21 +13,18 @@ VALUES
 	('C6');
 
 /* tire types */
--- Inserting tire types with sidewall color
 INSERT INTO tireTypes (tireTypeName)
 VALUES
 	('Hard'), 
 	('Medium'), 
 	('Soft');
-
+	
 INSERT INTO tireTypes(tireTypeName) 
 VALUES
 	('Intermediate'),
 	('Wet');
 
 /* tire type compounds */
--- Inserting mappings for tire type to compound ranges
--- Hard tire mappings
 INSERT INTO tireTypeCompounds (TireTypeID, CompoundID) VALUES
 	(1, 1), 
 	(1, 2), 
