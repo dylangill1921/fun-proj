@@ -13,7 +13,6 @@ CREATE TABLE users (
     password VARCHAR(255) NOT NULL, -- Password chosen by the user
     email VARCHAR(255) NOT NULL, -- Email address of the user
     phoneNumber VARCHAR(20) NOT NULL, -- Phone number of the user
-    subscriptionStatus VARCHAR(20) NOT NULL, -- Subscription status of the user
     dateOfBirth DATE NOT NULL, -- Date of birth of the user
     country CHAR(3) NOT NULL, -- Country of the user
     favouriteDriver VARCHAR(100) NOT NULL,
