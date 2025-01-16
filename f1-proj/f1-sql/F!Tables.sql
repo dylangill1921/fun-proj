@@ -1,5 +1,4 @@
 /* Formula 1 Tables */
-
 USE Formula1db;
 
 /* Create users table and check for data */
@@ -97,10 +96,12 @@ CREATE TABLE seasonsWithConstructors (
     TeamID INT, -- Constructor's unique ID
     entryYear INT NOT NULL, -- Year driver joined the team
     exitYear INT, -- Year driver left the team (can be NULL if still active)
-    PRIMARY KEY (DriverID, TeamID, EntryYear), -- Composite primary key
+    stintID INT NOT NULL, -- Identifier for each separate stint during the year
+    status VARCHAR(50), -- Status of the stint: 'Active', 'Completed', 'Temporary'
+    PRIMARY KEY (DriverID, TeamID, entryYear, stintID), -- Composite primary key
     FOREIGN KEY (DriverID) REFERENCES drivers(DriverID),
     FOREIGN KEY (TeamID) REFERENCES constructors(TeamID),
-    CONSTRAINT CHK_endYear_After_entryYear CHECK (exitYear >= entryYear)
+    CONSTRAINT CHK_endYear_After_entryYear CHECK (exitYear IS NULL OR exitYear >= entryYear) -- Ensure exitYear is not before entryYear or handle NULL
 );
 
 SELECT * FROM seasonsWithConstructors;
@@ -120,7 +121,7 @@ CREATE TABLE races (
     CONSTRAINT FK_Race_Track FOREIGN KEY (TrackID) REFERENCES tracks(TrackID) -- Establishes relationship with Tracks table
 );
 
-SELECT * FROM races;
+SELECT * FROM races; 
 
 /* Grand Prix Table */
 PRINT '-- grandPrix --';
@@ -137,15 +138,16 @@ CREATE TABLE raceStats (
     RaceStatsID INT PRIMARY KEY,
     RaceID INT NOT NULL,
     TrackID INT NOT NULL, -- Foreign Key to Tracks
-    sprintRaceRecord TIME NULL,
-    singleLapRecord TIME NULL,
-    topSpeedRecord DECIMAL(8, 3) NULL,
-    prevDriverWin INT,
-    prevConstructorWin INT,
+    Season INT NOT NULL, -- Tracks the season for these stats
+    sprintRaceRecord TIME NULL, -- Time for sprint races
+    singleLapRecord TIME NULL, -- Best single lap time
+    topSpeedRecord DECIMAL(8, 3) NULL, -- Top speed reached in km/h
+    prevDriverWinID INT, -- ID for driver who won previously
+    prevConstructorWinID INT, -- ID for constructor team that won previously
     CONSTRAINT FK_Race_Stats FOREIGN KEY (RaceID) REFERENCES races(RaceID), -- Establishes relationship with Races table
     CONSTRAINT FK_RaceStats_Track FOREIGN KEY (TrackID) REFERENCES tracks(TrackID), -- Establishes relationship with Tracks table 
-    CONSTRAINT fk_prevDriverWin FOREIGN KEY (prevDriverWin) REFERENCES drivers(DriverID),
-    CONSTRAINT fk_prevConstructorWin FOREIGN KEY (prevConstructorWin) REFERENCES constructors(TeamID)
+    CONSTRAINT fk_prevDriverWin FOREIGN KEY (prevDriverWinID) REFERENCES drivers(DriverID), -- Links to previous winning driver
+    CONSTRAINT fk_prevConstructorWin FOREIGN KEY (prevConstructorWinID) REFERENCES constructors(TeamID) -- Links to previous winning constructor team
 );
 
 SELECT * FROM raceStats;
@@ -200,7 +202,7 @@ PRINT '-- Tire Types Table --';
 DROP TABLE IF EXISTS tireTypes;
 CREATE TABLE tireTypes (
     TireTypeID INT IDENTITY(1, 1) PRIMARY KEY, -- Unique identifier for each tire type
-    tireTypeName VARCHAR(50) NOT NULL -- Types like 'Slicks', 'Intermediates', 'Wets'
+    tireTypeName VARCHAR(20) NOT NULL -- Types like 'Slicks', 'Intermediates', 'Wets'
 );
 
 SELECT * FROM tireTypes;
@@ -210,9 +212,18 @@ PRINT '-- Tire Compounds Table --';
 DROP TABLE IF EXISTS tireCompounds;
 CREATE TABLE tireCompounds (
     CompoundID INT IDENTITY(1, 1) PRIMARY KEY, -- Unique identifier for each compound
-    TireTypeID INT NOT NULL, -- Foreign Key to TireTypes
-    compoundName VARCHAR(50) NOT NULL, -- Names like 'C1', 'C2', 'C3', 'C4', 'C5' for slicks, and general identifiers for wets
-    CONSTRAINT FK_TireType FOREIGN KEY (TireTypeID) REFERENCES tireTypes(TireTypeID)
+    compoundName VARCHAR(5) NOT NULL, -- Names like 'C1', 'C2', 'C3', 'C4', 'C5' for slicks, and general identifiers for wets
 );
 
 SELECT * FROM tireCompounds;
+
+/* tire type compound junction table */
+PRINT '-- Tire Type Compounds Table --';
+DROP TABLE IF EXISTS tireTypeCompounds;
+CREATE TABLE tireTypeCompounds (
+    TireTypeID INT,
+    CompoundID INT,
+    PRIMARY KEY (TireTypeID, CompoundID),
+    FOREIGN KEY (TireTypeID) REFERENCES tireTypes(TireTypeID),
+    FOREIGN KEY (CompoundID) REFERENCES tireCompounds(CompoundID)
+);
