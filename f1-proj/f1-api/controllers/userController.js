@@ -6,7 +6,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 // Register a new user
-// Hashes teh users password for security
+// Hashes the users password for security
 // Stores the user in the database through the user model
 // Issues a jwt token upon successful registration
 exports.registerUser = async (req, res) => {
@@ -30,7 +30,7 @@ exports.registerUser = async (req, res) => {
         const userId = await userModel.createUser(user);
 
         // Generate a JWT token for the new user
-        const token = jwt.sign({ id: userId }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        const token = jwt.sign({ id: userId }, process.env.JWT_SECRET, { expiresIn: '30d' });
 
         // Respond with a success msg, the users ID, and the generated token
         res.status(201).json({
@@ -40,7 +40,7 @@ exports.registerUser = async (req, res) => {
         });
     } catch (error) {
         // Handle any errors during registration with a 500 status code
-        res.status(500).json({ message: 'Error registering user.', error });
+        res.status(500).json({ message: 'Error registering user...', error });
     }
 };
 
@@ -76,7 +76,7 @@ exports.loginUser = async (req, res) => {
     } catch (error) 
     {
         // Handle any errors during login with a 500 status code
-        res.status(500).json({ message: 'Server error!', error });
+        res.status(500).json({ message: 'Server error', error });
     }
 };
 
