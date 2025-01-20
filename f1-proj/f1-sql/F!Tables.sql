@@ -87,6 +87,8 @@ CREATE TABLE constructors (
 
 SELECT * FROM constructors;
 
+DROP TABLE seasonsWithConstructors;
+
 /* Create seasonswithconstructor table and check for data */
 PRINT '-- Seasons With Constructor Table --';
 DROP TABLE IF EXISTS seasonsWithConstructors;
@@ -130,6 +132,8 @@ CREATE TABLE grandPrix (
 	GpName	VARCHAR(100) NOT NULL
 );
 
+DROP TABLE raceStats;
+
 /* Create racestats table and check for data */
 PRINT '-- Race Stats Table --';
 DROP TABLE IF EXISTS raceStats;
@@ -138,8 +142,7 @@ CREATE TABLE raceStats (
     RaceID INT NOT NULL,
     TrackID INT NOT NULL, -- Foreign Key to Tracks
     Season INT NOT NULL, -- Tracks the season for these stats
-    sprintRaceRecord TIME NULL, -- Time for sprint races
-    singleLapRecord TIME NULL, -- Best single lap time
+    singleLapRecord VARCHAR(15) NULL, -- Best single lap time
     topSpeedRecord DECIMAL(8, 3) NULL, -- Top speed reached in km/h
     prevDriverWinID INT, -- ID for driver who won previously
     prevConstructorWinID INT, -- ID for constructor team that won previously
