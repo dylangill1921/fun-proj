@@ -926,9 +926,21 @@ VALUES
 (856, NULL, NULL, 'Ricardo', 'Zunino', NULL, NULL, NULL, NULL),
 (857, NULL, NULL, 'Philippe', 'Étancelin', NULL, NULL, NULL, NULL);
 
+/* Drivers Table */
+INSERT INTO drivers (DriverID, TeamID, CountryID, firstName, lastName, dateOfBirth, born, helmutColour, number)
+VALUES
+	(22, 1, 82, 'Kimi', 'Antonelli', '2006-08-25', 'Bologna', 'Green', 12),
+	(858, 6, 9, 'Jack', 'Doohan', '2003-01-20', 'Gold Coast', 'Blue', 7),
+	(859, 7, 60, 'Isack', 'Hadjar', '2004-09-28', 'Paris', 'White', 6),
+	(860, 8, 24, 'Gabriel', 'Bortoleto', '2004-10-14', 'São Paulo', 'Black', 5);
+
+
+
+
+
 -- select all info from table
 SELECT * from drivers;
-
+SELECT * FROM drivers WHERE DriverID = 22;
 -- select all info from top 24 drivers
 SELECT 
     d.DriverID, 
