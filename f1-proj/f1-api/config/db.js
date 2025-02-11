@@ -1,6 +1,6 @@
 // config/db.js
 
-// Import the mssql package
+// Import required modules
 const sql = require('mssql');
 
 // Load the environment variables fromt the .env file
@@ -20,8 +20,7 @@ const config = {
     }
 };
 
-// Create a connection pool using the configuration above,
-//  which allows for better performance
+// Create a connection pool using the configuration above
 const poolPromise = new sql.ConnectionPool(config)
     .connect()
     .then(pool => {
