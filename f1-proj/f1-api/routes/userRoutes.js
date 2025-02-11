@@ -1,15 +1,14 @@
 // routes/userRoutes.js
-
-// Import the required modules
 const express = require('express');
 const router = express.Router();
-const {registerUser, loginUser} = require('../controllers/userController');
+const { registerUser, loginUser } = require('../controllers/userController');
+const { validateUserRegistration, validateUserLogin, handleValidationErrors } = require('../middlewares/validationMiddleware');
 
 // Route for registering a new user
-router.post('/register', registerUser);
+router.post('/register',  validateUserRegistration, handleValidationErrors, registerUser);
 
-// Route for a new login
-router.post('/login', loginUser);
+// Route for user login
+router.post('/login', validateUserLogin, handleValidationErrors, loginUser);
 
 // Export the router to be used in the app
 module.exports = router;
