@@ -1,0 +1,41 @@
+/* componenets/Slick-Carousel/slick.css */
+
+.slide {
+    position: relative;
+    text-align: center; 
+}
+
+  /* Make images responsive */
+.slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Caption styling */
+.slide-caption {
+    position: absolute; 
+    bottom: 20px;        
+    left: 20px;          
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 10px 15px;
+    border-radius: 4px;
+    max-width: 300px;     
+}
+
+/* Fade in effect for the caption on hover */
+.slide:hover .slide-caption {
+    transition: opacity 0.3s ease;
+    opacity: 1;
+}
+
+/* Style the dots at the bottom */
+.slick-dots li button:before {
+    font-size: 12px;
+    color: #fff;
+}
+
+.slick-dots li.slick-active button:before {
+    color: #e10600; 
+}

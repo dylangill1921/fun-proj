@@ -1,0 +1,152 @@
+/* /Footer/Footer.css */
+/* Footer.css */
+footer {
+    background-color: black;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+footer h3 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+/* Wrapper styles */
+.wrapper {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0; 
+    margin: 0; 
+}
+
+/* Icon styles */
+.wrapper .icon {
+    position: relative;
+    background: transparent;
+    border-radius: 50%;
+    margin: 10px;
+    width: 50px;
+    height: 50px;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55), color 0.2s ease;
+    border: 2px solid white;
+}
+
+.wrapper .icon i {
+    color: white;
+}
+
+/* Tooltip styles */
+.wrapper .tooltip {
+    position: absolute;
+    top: 0;
+    left: 50%; /* Center the tooltip horizontally */
+    transform: translateX(-50%); /* Adjust to fine-tune the position */
+    font-size: 14px;
+    color: white;
+    padding: 5px 8px;
+    border-radius: 5px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Hover effects for icons and tooltips */
+    .wrapper .icon:hover,
+    .wrapper .icon:hover .tooltip {
+    background-color: #1da1f2; /* Twitter blue */
+}
+
+.wrapper .instagram:hover,
+.wrapper .instagram:hover .tooltip {
+    background-color: #e4405f; /* Instagram pink */
+}
+
+.wrapper .youtube:hover,
+.wrapper .youtube:hover .tooltip {
+    background-color: red; /* YouTube red */
+}
+
+.wrapper .tiktok:hover,
+.wrapper .tiktok:hover .tooltip {
+    background-color: black; /* TikTok black */
+}
+
+.wrapper .icon:hover .tooltip {
+    top: -45px;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.wrapper .icon:hover span,
+.wrapper .icon:hover .tooltip {
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Footer divider */#bottom {
+    height: 1px;
+    background-color: lightgray;
+    margin: 20px auto;
+    max-width: 70%;
+}
+
+/* Sponsor logos */
+.main-sponsors,
+.secondary-sponsors,
+.third-sponsors {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.sponsor,
+.sponsor-logo {
+    width: 100px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.sponsor {
+    width: 110px; 
+}
+
+.sponsor:hover,
+.sponsor-logo:hover {
+    transform: scale(1.1);
+}
+
+/* Remove default link styling */
+.main-sponsors a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Style paragraph text */
+#apps p {
+    font: 14px arial;
+    margin-bottom: 10px;
+}
+
+/* Style links within #apps */
+#apps a {
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* Remove border from images within links */
+#apps a img {
+    border: none;
+    max-width: 150px;
+    margin: 0 10px;
+}

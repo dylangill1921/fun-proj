@@ -1,0 +1,166 @@
+/* components/Header/Header.css */
+
+/* Base header styling */
+.formula1-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    transition: transform 3s ease-in-out;
+    z-index: 999;
+    background-color: transparent; 
+    border: none;      
+    box-shadow: none;
+}
+
+/*Bbox shadow or subtle effect at the top */
+.formula1-header::after {
+    content: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent);
+    pointer-events: none;
+}
+
+/* Slide it up when hidden */
+.formula1-header.hidden {
+    transform: translateY(-100%);
+}
+
+/* If scrolled, add a slight dark background */
+.formula1-header.scrolled {
+    background-color: rgba(0, 0, 0, 0.8);
+    transition: background-color 3s ease-in-out;
+}
+
+/* Header container */
+.header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    height: 100%;
+    position: relative;
+}
+
+/* Logo */
+.header-logo {
+    color: #fff;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-decoration: none;
+    position: relative;
+}
+
+/* Underline hover effect */
+.header-logo::before {
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    right: 100%;
+    height: 2px;
+    background-color: #e10600; 
+    transition: right 0.5s ease;
+}
+
+.header-logo:hover { 
+    color: #e10600;          
+}
+
+.header-logo:hover::before {
+    right: 0;
+}
+
+/* Mobile menu icon */
+.menu-icon {
+    display: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Navigation menu */
+.nav-menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Mobile active class */
+.nav-menu.active {
+    left: 0;
+}
+
+/* Nav items */
+.nav-item {
+    margin: 0 5px;         
+    padding: 0;
+}
+
+.nav-links {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 400;
+    padding: 0.5rem 1rem;
+    position: relative;
+    transition: color 0.5s ease;
+}
+
+/* Subtle underline on hover */
+.nav-links::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 100%;
+    height: 2px;
+    background-color: #e10600; /* F1 red */
+    transition: right 0.5s ease;
+}
+
+.nav-links:hover {
+    color: #e10600;          
+}
+
+.nav-links:hover::before {
+    right: 0;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 960px) {
+        .menu-icon {
+        display: block;
+    }
+
+    .nav-menu {
+        position: absolute;
+        top: 60px; 
+        right: 0;
+        width: 200px;
+        height: calc(100vh - 60px);
+        flex-direction: column;
+        background-color: rgba(0, 0, 0, 0.95);
+        transform: translateX(100%);
+        transition: transform 0.5s ease;
+        padding-top: 20px;
+        }
+
+    .nav-menu.active {
+        transform: translateX(0);
+    }
+
+    .nav-item {
+        margin: 15px 0;
+    }
+}
