@@ -31,7 +31,7 @@ const createUser = async (userData) => {
             `);
         return result.recordset[0].id;
     } catch (error) {
-        console.error('Error creating user:', error);
+        console.error('Error creating user...', error);
         throw new Error('Failed to create user...');
     }
 };
@@ -45,7 +45,7 @@ const findUserByEmail = async (email) => {
             .query('SELECT * FROM users WHERE email = @email');
         return result.recordset[0];  
     } catch (error) {
-        console.error('Error finding user by email:', error);
+        console.error('Error finding user by email...', error);
         throw new Error('Failed to find user...');
     }
 };
@@ -59,8 +59,8 @@ const doesUserAlreadyExist = async (email) => {
             .query('SELECT COUNT(*) AS count FROM users WHERE email = @email'); 
         return result.recordset[0].count > 0; 
     } catch (error) {
-        console.error('Error checking if user exists:', error);
-        throw new Error('Failed to check user existence');
+        console.error('Error checking if user exists...', error);
+        throw new Error('Failed to check user existence...');
     }
 };
 

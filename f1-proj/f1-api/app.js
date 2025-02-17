@@ -1,4 +1,4 @@
-// Importing the required modules
+// If1-api/app.js
 const express = require('express');
 const bodyParser = require('body-parser');
 const userRoutes = require('./routes/userRoutes');
@@ -11,7 +11,7 @@ const app = express();
 app.use(cors()); 
 app.use(bodyParser.json());
 
-// Defining the base route for user-related endpoints
+// Defining the base route for user endpoints
 app.use('/api/users', userRoutes);
 
 // Error handling middleware
