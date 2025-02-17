@@ -15,7 +15,7 @@
     box-shadow: none;
 }
 
-/*Bbox shadow or subtle effect at the top */
+/*Box shadow or subtle effect at the top */
 .formula1-header::after {
     content: none;
     position: absolute;
@@ -125,7 +125,7 @@
     left: 0;
     right: 100%;
     height: 2px;
-    background-color: #e10600; /* F1 red */
+    background-color: #e10600; 
     transition: right 0.5s ease;
 }
 

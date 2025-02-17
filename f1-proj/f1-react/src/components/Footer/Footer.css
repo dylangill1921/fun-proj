@@ -1,5 +1,5 @@
 /* /Footer/Footer.css */
-/* Footer.css */
+
 footer {
     background-color: black;
     color: #fff;
@@ -62,22 +62,22 @@ footer h3 {
 /* Hover effects for icons and tooltips */
     .wrapper .icon:hover,
     .wrapper .icon:hover .tooltip {
-    background-color: #1da1f2; /* Twitter blue */
+    background-color: #1da1f2; 
 }
 
 .wrapper .instagram:hover,
 .wrapper .instagram:hover .tooltip {
-    background-color: #e4405f; /* Instagram pink */
+    background-color: #e4405f; 
 }
 
 .wrapper .youtube:hover,
 .wrapper .youtube:hover .tooltip {
-    background-color: red; /* YouTube red */
+    background-color: red; 
 }
 
 .wrapper .tiktok:hover,
 .wrapper .tiktok:hover .tooltip {
-    background-color: black; /* TikTok black */
+    background-color: black; 
 }
 
 .wrapper .icon:hover .tooltip {
@@ -92,7 +92,8 @@ footer h3 {
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.1);
 }
 
-/* Footer divider */#bottom {
+/* Footer divider */
+#bottom {
     height: 1px;
     background-color: lightgray;
     margin: 20px auto;
